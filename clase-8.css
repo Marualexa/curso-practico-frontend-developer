@@ -1,0 +1,51 @@
+:root {
+    --very--light-pink: #C7C7C7;
+    --white: #ffffff;
+    --text-input-firld: #f7f7f7;
+    --hospital-green: #ACD9B2;
+    --black: #000000;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 18px;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.mobile-menu {
+    padding: 24px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+    
+}
+
+.mobile-menu ul {
+    padding: 27px;
+    margin: 24px 0 0;
+    list-style: none;
+}
+
+.mobile-menu ul:nth-child(1) {
+    border-bottom: 1px solid var(--very--light-pink);
+}
+.mobile-menu ul li {
+    margin-bottom: 24px;
+}
+
+.email {
+    font-size: var(--sm);
+    font-weight: 300 !important;
+}
+.sign-out {
+    font-size: var(--sm);
+    color: var(--hospital-green) !important;
+}
+
+
