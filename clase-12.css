@@ -1,30 +1,30 @@
 :root {
-    --very--light-pink: #C7C7C7;
-    --white: #ffffff;
-    --text-input-firld: #f7f7f7;
-    --hospital-green: #ACD9B2;
+    --white: #FFFFFF;
     --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
     --sm: 14px;
     --md: 16px;
     --lg: 18px;
 }
 
 body {
-    font-family: 'Quicksand', sans-serif;
-    box-sizing: border-box;
-    padding: 0;
     margin: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .product-detail {
     width: 360px;
     padding-bottom: 24px;
-    position: relative;
+    position: absolute;
     right: 0;
+    border: 1px solid var(--black);
+    border-radius: 30px;
 }
 
 .product-detail-close {
-    background-color: var(--white);
+    background: var(--white);
     width: 14px;
     height: 14px;
     position: absolute;
@@ -32,7 +32,7 @@ body {
     left: 24px;
     z-index: 2;
     padding: 12px;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 .product-detail-close:hover {
@@ -43,11 +43,11 @@ body {
     width: 100%;
     height: 360px;
     object-fit: cover;
-    border-radius: 0 0 20px 20px;
+    border-radius: 30px 30px 0 0;
 }
 
 .product-info {
-    margin: 24px 24px 0 24px
+    margin: 24px 24px 0 24px;
 }
 
 .product-info p:nth-child(1) {
@@ -58,14 +58,14 @@ body {
 }
 
 .product-info p:nth-child(2) {
-    color: var(--very--light-pink);
+    color: var(--very-light-pink);
     font-size: var(--md);
     margin-top: 0;
     margin-bottom: 36px;
 }
 
 .product-info p:nth-child(3) {
-    color: var(--very--light-pink);
+    color: var(--very-light-pink);
     font-size: var(--sm);
     margin-top: 0;
     margin-bottom: 36px;
@@ -89,28 +89,14 @@ body {
     justify-content: center;
 }
 
-.dots {
-    text-align: center;
+.add-to-cart-button img {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
 }
-
-.dot {
-    cursor: pointer;
-    height: 8px;
-    width: 8px;
-    margin: 0 2px;
-    background-color: var(--very-light-pink);
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.dots span:nth-child(1) {
-    background-color: var(--hospital-green);
-}
-
 
 @media (max-width: 640px) {
     .product-detail {
         width: 100%;
     }
 }
-
