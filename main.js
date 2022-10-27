@@ -8,14 +8,18 @@ const productDetailContainer = document.querySelector('#products-in-cart');
 const cardContainer = document.querySelector('.cards-container');
 const closeIcon = document.querySelector('.product-detail-close');
 const priceProduct = document.querySelector('.price')
-const imagInProduct = document.querySelector('.product--image')
-const nameProduct = document.querySelector('.product--name')
-const descriptionProduct = document.querySelector('.product-description')
+const imagInProduct = document.querySelector('.product--image');
+const nameProduct = document.querySelector('.product--name');
+const descriptionProduct = document.querySelector('.product-description');
+
+const cardOrderButton = document.querySelector('#order-button')
 
 emailMenu.addEventListener('click', toggleDesktopMenu);
 menuEsteIcon.addEventListener('click', toggleMovilMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoShoppingCartContainer);
 closeIcon.addEventListener('click', closeProductDetailAside);
+
+
 
 function toggleDesktopMenu() {
     let isshoppingCartContainerClosed = shoppingCartContainer.classList.contains('inactive');
@@ -27,7 +31,7 @@ function toggleDesktopMenu() {
 
     if (!isshoppingCartContainerClosed) {
         desktopMenu.classList.add('inactive');
-    } 
+    }
 
     desktopMenu.classList.toggle('inactive');
 }
@@ -46,13 +50,13 @@ function toggleMovilMenu() {
 
 function toggleCarritoShoppingCartContainer() {
     let isMovilMenuclosed = movilMenu.classList.contains('inactive');
-   
+
     if (!isMovilMenuclosed) {
         movilMenu.classList.add('inactive');
     }
 
     let isProductDetailClose = productDetailContainer.classList.contains('inactive');
-       
+
     if (!isProductDetailClose) {
         productDetailContainer.classList.add('inactive');
     }
@@ -65,14 +69,136 @@ function openProductDetailAside(event) {
     console.log("esta es la info", event)
     shoppingCartContainer.classList.add('inactive');
     productDetailContainer.classList.remove('inactive');
-    
+
     imagInProduct.setAttribute('src', event.image)
     nameProduct.innerText = event.name
     priceProduct.innerText = '$' + event.price
+
+    const infoDetall = document.querySelector('.info-detall');
+
+    let autocard = document.querySelector('.add-to-cart-button')
+    console.log('aqui', autocard)
+        if(autocard) {
+            autocard.parentElement.removeChild(autocard)
+        }
+    const addToCart = document.createElement('button');
+    const imgcar =document.createElement('img');
+    imgcar.setAttribute('src', './iconos/carrito.png')
+
+    addToCart.classList.add('add-to-cart-button');
+    addToCart.classList.add('primary-button');
+    addToCart.innerText = 'Add to cart';
+
+    addToCart.appendChild(imgcar);
+    infoDetall.appendChild(addToCart);
+    
+    
+
+
+    function add() {
+       return agregarItemAlCarrito(event)
+    }
+
+    addToCart.addEventListener('click', add, false);
 }
 
 function closeProductDetailAside() {
     productDetailContainer.classList.add('inactive');
+}
+
+
+const orderProduct = []
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+// orderProduct.push({
+//     image: './logos/img1.jpg',
+//     name: 'delproducto',
+//     price: '10',
+//     imagClose: './iconos/icons8.png',
+// })
+
+function listOrderProduct(orderInCard, createCheckoutButton = true) {
+    const orderContainer = document.querySelector('.my-order-content')
+    orderContainer.innerHTML = ''
+
+    for (let listOrderProduct of orderInCard) {
+        const orderList = document.createElement('div');
+        orderList.classList.add('shopping-cart');
+
+        //Crear figure y img, agregar al figure el img por dentro, agragarle el atribucto src al img
+        const figureImag = document.createElement('figure');
+        const imagCar = document.createElement('img');
+        imagCar.setAttribute('src', listOrderProduct.image);
+
+        figureImag.appendChild(imagCar);
+
+        const contentInfo = document.createElement('p');
+        contentInfo.innerText = listOrderProduct.name;
+
+        const priceInform = document.createElement('p');
+        priceInform.innerText = '$' + listOrderProduct.price;
+
+        const imgClose = document.createElement('img');
+        imgClose.setAttribute('src', './iconos/icons8.png');
+
+        orderList.appendChild(figureImag);
+
+        orderList.appendChild(contentInfo);
+
+        orderList.appendChild(priceInform);
+
+        orderList.appendChild(imgClose);
+
+        orderContainer.appendChild(orderList);
+    }
+
+    const buttonOrder = document.createElement('button');
+    buttonOrder.classList.add('primary-button');
+    buttonOrder.innerText = 'Checkout';
+
+    if (createCheckoutButton == true) {
+        orderContainer.appendChild(buttonOrder);
+    }
 }
 
 const productList = [];
@@ -153,51 +279,65 @@ productList.push({
     image: './logos/img15.jpg',
 });
 
+function agregarItemAlCarrito(info) {
+    console.log('esta es info', info);
+    orderProduct.push(info)
+    listOrderProduct(orderProduct, true);
+}
+
 function listProducts(arr) {
     for (let product of arr) {
         const productCard = document.createElement('div');
         productCard.classList.add('product-card');
-    
+
         //Product= {name, price, image} -> product.image
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
         // productImg.addEventListener('click', openProductDetailAside)
-        productCard.addEventListener('click', function () {
+        productCard.addEventListener('click', function (event) {
+            event.stopPropagation();
             openProductDetailAside(product)
-        }) 
-    
+        })
+
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
-    
+
         const productInfoDiv = document.createElement('div');
-    
+
         const productPrice = document.createElement('p');
         productPrice.innerText = '$' + product.price;
-    
+
         const productName = document.createElement('p');
         productName.innerText = product.name;
-    
+
         productInfoDiv.appendChild(productPrice);
         productInfoDiv.appendChild(productName);
-    
+
         const productInfoFigure = document.createElement('figure');
-    
+
         const productImgCard = document.createElement('img');
-        productImgCard.setAttribute('src', './iconos/carrito.png')
-    
+        productImgCard.setAttribute('src', './iconos/carrito.png');
+
+        productImgCard.addEventListener('click', function (event) {
+            console.log('event click');
+            event.stopPropagation();
+            agregarItemAlCarrito(product)
+        })
+
         productInfoFigure.appendChild(productImgCard);
-    
+
         productInfo.appendChild(productInfoDiv);
         productInfo.appendChild(productInfoFigure);
-    
+
         productCard.appendChild(productImg);
         productCard.appendChild(productInfo);
-    
-    
+
+
         cardContainer.appendChild(productCard)
     }
-    
+
 }
 
 listProducts(productList);
 
+listOrderProduct(orderProduct, false);

@@ -189,10 +189,11 @@ nav {
 #shopping-cart-container {
     background: var(--white);
     width: 360px;
-    padding: 0 24px;
+    padding: 19px 24px;
     box-sizing: border-box;
     position: absolute;
     right: 0;
+    border-radius: 0 0 10px 10px;
 }
 
 .title-container {
