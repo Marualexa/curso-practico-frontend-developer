@@ -5,14 +5,15 @@ const movilMenu = document.querySelector('.mobile-menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shopping-cart-container');
 const productDetailContainer = document.querySelector('#products-in-cart');
+const contsOrder = document.querySelector('#contador');
+const totalProducts = document.querySelector('.total');
 const cardContainer = document.querySelector('.cards-container');
 const closeIcon = document.querySelector('.product-detail-close');
-const priceProduct = document.querySelector('.price')
+const priceProduct = document.querySelector('.price');
 const imagInProduct = document.querySelector('.product--image');
 const nameProduct = document.querySelector('.product--name');
 const descriptionProduct = document.querySelector('.product-description');
-
-const cardOrderButton = document.querySelector('#order-button')
+const cardOrderButton = document.querySelector('#order-button');
 
 emailMenu.addEventListener('click', toggleDesktopMenu);
 menuEsteIcon.addEventListener('click', toggleMovilMenu);
@@ -91,8 +92,6 @@ function openProductDetailAside(event) {
 
     addToCart.appendChild(imgcar);
     infoDetall.appendChild(addToCart);
-    
-    
 
 
     function add() {
@@ -157,15 +156,18 @@ const orderProduct = []
 //     imagClose: './iconos/icons8.png',
 // })
 
+//esta funcion pinta el carrito
+
 function listOrderProduct(orderInCard, createCheckoutButton = true) {
     const orderContainer = document.querySelector('.my-order-content')
     orderContainer.innerHTML = ''
 
     for (let listOrderProduct of orderInCard) {
+
+        console.log('este es un item del carrito', listOrderProduct)
         const orderList = document.createElement('div');
         orderList.classList.add('shopping-cart');
 
-        //Crear figure y img, agregar al figure el img por dentro, agragarle el atribucto src al img
         const figureImag = document.createElement('figure');
         const imagCar = document.createElement('img');
         imagCar.setAttribute('src', listOrderProduct.image);
@@ -181,6 +183,11 @@ function listOrderProduct(orderInCard, createCheckoutButton = true) {
         const imgClose = document.createElement('img');
         imgClose.setAttribute('src', './iconos/icons8.png');
 
+        imgClose.addEventListener('click', () => {
+            eliminarItemCarrito(listOrderProduct)
+        })
+
+
         orderList.appendChild(figureImag);
 
         orderList.appendChild(contentInfo);
@@ -190,6 +197,7 @@ function listOrderProduct(orderInCard, createCheckoutButton = true) {
         orderList.appendChild(imgClose);
 
         orderContainer.appendChild(orderList);
+
     }
 
     const buttonOrder = document.createElement('button');
@@ -199,6 +207,15 @@ function listOrderProduct(orderInCard, createCheckoutButton = true) {
     if (createCheckoutButton == true) {
         orderContainer.appendChild(buttonOrder);
     }
+
+    contsOrder.innerText = orderInCard.length
+    
+    const totalPrices = orderInCard.map(item => item.price);
+    const suma = totalPrices.reduce((suma, element) => suma + element, 0);
+    totalProducts.innerText = suma
+
+    console.log('suma', suma);
+    
 }
 
 const productList = [];
@@ -285,6 +302,15 @@ function agregarItemAlCarrito(info) {
     listOrderProduct(orderProduct, true);
 }
 
+function eliminarItemCarrito(itemDeEliminacion) {
+    console.log('eliminar item', itemDeEliminacion);
+    console.log('este es el carrito actual', orderProduct);
+    const index = orderProduct.findIndex(item => item.name === itemDeEliminacion.name);
+    console.log('este es el indice', index);
+    orderProduct.splice(index, 1);
+    listOrderProduct(orderProduct, true);
+}
+
 function listProducts(arr) {
     for (let product of arr) {
         const productCard = document.createElement('div');
@@ -341,3 +367,6 @@ function listProducts(arr) {
 listProducts(productList);
 
 listOrderProduct(orderProduct, false);
+
+
+

@@ -46,7 +46,7 @@
         <li class="navbar-email">email@example.com</li>
         <li class="navbar-shopping-cart">
           <img src="./iconos/shopping.svg" alt="shopping cart" height="30px">
-          <div></div>
+          <div id="contador">0</div>
         </li>
       </ul>
     </div>
@@ -110,6 +110,7 @@
         </li>
         <li>
           <a href="/" class="sign-out">Sign out</a>
+
         </li>
       </ul>
     </div>
@@ -120,7 +121,13 @@
       <img src="./iconos/right-arrow.svg" alt="">
       <p class="title">My order</p>
     </div>
-    <div class="my-order-content"></div>
+    
+    <div class="my-order-content">
+      <p>
+        <span>Total</span>
+      </p>
+      <p class="total">$0,00</p>
+    </div>
   </aside>
 
   <section class="main-container">
@@ -141,10 +148,6 @@
       <p class="price">$120,00</p>
       <p class="product--name">Relog</p>
       <p class="product-description">Watch combos for women and hair, different colors</p>
-      <!-- <button id="order-button" class="primary-button add-to-cart-button">
-        <img src="./iconos/carrito.png" alt="carrito">
-        Add to cart
-      </button> -->
     </div>
   </aside>
 
