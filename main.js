@@ -79,11 +79,11 @@ function openProductDetailAside(event) {
 
     let autocard = document.querySelector('.add-to-cart-button')
     console.log('aqui', autocard)
-        if(autocard) {
-            autocard.parentElement.removeChild(autocard)
-        }
+    if (autocard) {
+        autocard.parentElement.removeChild(autocard)
+    }
     const addToCart = document.createElement('button');
-    const imgcar =document.createElement('img');
+    const imgcar = document.createElement('img');
     imgcar.setAttribute('src', './iconos/carrito.png')
 
     addToCart.classList.add('add-to-cart-button');
@@ -95,7 +95,7 @@ function openProductDetailAside(event) {
 
 
     function add() {
-       return agregarItemAlCarrito(event)
+        return agregarItemAlCarrito(event)
     }
 
     addToCart.addEventListener('click', add, false);
@@ -158,11 +158,37 @@ const orderProduct = []
 
 //esta funcion pinta el carrito
 
+function newResult(array) {
+    const cantidad = array
+        .map(item => item.id)
+        .reduce((obj, item) => {
+            if (!obj[item]) {
+                obj[item] = 1;
+            }
+            else {
+                obj[item] = obj[item] + 1
+            }
+
+
+            return obj;
+        }, {});
+    return cantidad;
+}
+
 function listOrderProduct(orderInCard, createCheckoutButton = true) {
     const orderContainer = document.querySelector('.my-order-content')
     orderContainer.innerHTML = ''
 
-    for (let listOrderProduct of orderInCard) {
+    //calculando items repetidos
+    const contadorDeIds = newResult(orderInCard);
+    console.log('contadorDeIds', contadorDeIds);
+
+    const removeItems = orderInCard.filter((item, pos) => {
+        return orderInCard.indexOf(item) == pos;
+    })
+    console.log("removeItems", removeItems);
+
+    for (let listOrderProduct of removeItems) {
 
         console.log('este es un item del carrito', listOrderProduct)
         const orderList = document.createElement('div');
@@ -175,7 +201,8 @@ function listOrderProduct(orderInCard, createCheckoutButton = true) {
         figureImag.appendChild(imagCar);
 
         const contentInfo = document.createElement('p');
-        contentInfo.innerText = listOrderProduct.name;
+        contentInfo.innerText = listOrderProduct.name + ' X' + contadorDeIds[listOrderProduct.id];
+        
 
         const priceInform = document.createElement('p');
         priceInform.innerText = '$' + listOrderProduct.price;
@@ -204,96 +231,144 @@ function listOrderProduct(orderInCard, createCheckoutButton = true) {
     buttonOrder.classList.add('primary-button');
     buttonOrder.innerText = 'Checkout';
 
+    //seccion de precios
+
+    const totalPrices = orderInCard.map(item => item.price);
+    const suma = totalPrices.reduce((suma, element) => {
+        return suma + parseFloat(element)
+    }, 0);
+
+    totalProducts.innerText = suma;
+
+    const pContainer = document.createElement('div');
+    pContainer.classList.add('total-price')
+    const pSection = document.createElement('p');
+    const spanSection = document.createElement('span');
+    const pSecondSection = document.createElement('p');
+
+    spanSection.innerText = 'Total';
+    pSection.appendChild(spanSection);
+
+    pSecondSection.innerText = '$' + Number(suma).toFixed(2);
+    pSecondSection.classList.add('total');
+
+    pContainer.appendChild(pSection);
+    pContainer.appendChild(pSecondSection);
+    orderContainer.appendChild(pContainer);
+
     if (createCheckoutButton == true) {
         orderContainer.appendChild(buttonOrder);
     }
 
-    contsOrder.innerText = orderInCard.length
-    
-    const totalPrices = orderInCard.map(item => item.price);
-    const suma = totalPrices.reduce((suma, element) => suma + element, 0);
-    totalProducts.innerText = suma
-
-    console.log('suma', suma);
-    
+    contsOrder.innerText = removeItems.length
 }
 
 const productList = [];
 productList.push({
+    id: '1',
     name: 'Colageno',
     price: '95.00',
     image: './logos/img1.jpg',
+    cantidad: '1'
 });
 
 productList.push({
+    id: '2',
     name: 'Glucosa',
-    price: '89,00',
+    price: '89.27',
     image: "./logos/img2.png",
+    cantidad: '1'
 });
 productList.push({
+    id: '3',
     name: 'Combos',
-    price: '100,00',
+    price: '100.00',
     image: './logos/img3.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '4',
     name: 'Hidratante',
-    price: '45,00',
+    price: '45.00',
     image: './logos/img4.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '5',
     name: 'Aceites',
-    price: '13,00',
+    price: '13.67',
     image: './logos/img5.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '6',
     name: 'Relog',
-    price: '120,00',
+    price: '120.00',
     image: './logos/img6.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '7',
     name: 'Maquillaje',
-    price: '9,00',
+    price: '9.00',
     image: './logos/img7.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '8',
     name: 'Hidratante',
-    price: '20,00',
+    price: '20.00',
     image: './logos/img8.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '9',
     name: 'Crema',
-    price: '45,00',
+    price: '45.00',
     image: './logos/img9.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '10',
     name: 'Brochas',
-    price: '22,00',
+    price: '22.00',
     image: './logos/img10.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '11',
     name: 'Belleza',
-    price: '170,00',
+    price: '170.00',
     image: './logos/img11.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '12',
     name: 'Hidratante',
-    price: '70,00',
+    price: '70.00',
     image: './logos/img12.png',
+    cantidad: '1'
 });
 productList.push({
+    id: '13',
     name: 'Brillo',
-    price: '10,00',
+    price: '10.00',
     image: './logos/img13.jpg',
+    cantidad: '1'
 });
 productList.push({
+    id: '14',
     name: 'Labial',
-    price: '30,00',
+    price: '30.00',
     image: './logos/img14.png',
+    cantidad: '1'
 });
 productList.push({
+    id: '15',
     name: 'Colageno',
-    price: '15,00',
+    price: '15.00',
     image: './logos/img15.jpg',
+    cantidad: '1'
 });
 
 function agregarItemAlCarrito(info) {

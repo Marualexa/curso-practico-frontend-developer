@@ -331,10 +331,11 @@ nav {
     background: var(--white);
     width: 360px;
     padding-bottom: 24px;
-    position: absolute;
-    right: 0;
-    /* top: 80px; */
     border-radius: 30px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
 }
 
 .product-detail-close {
@@ -387,8 +388,9 @@ nav {
 .points {
     display: flex;
     justify-content: center;
-  }
-  .points > span {
+}
+
+.points>span {
     background: var(--very--light-pink);
     width: 8px;
     height: 8px;
@@ -396,13 +398,15 @@ nav {
     border-radius: 50%;
     list-style-type: none;
     cursor: pointer;
-  }
-  .points > .active {
+}
+
+.points>.active {
     background: var(--hospital-green);
-  }
-  .points > li:hover {
+}
+
+.points>li:hover {
     background: var(--hospital-green);
-  }
+}
 
 .primary-button {
     background-color: var(--hospital-green);
@@ -428,6 +432,16 @@ nav {
     padding: 10px;
 }
 
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 63px;
+    background: linear-gradient(225deg, var(--hospital-green), var(--hospital-green));
+    box-shadow:  -20px -20px 60px var(--text-input-firld),
+             20px 20px 60px var(--text-input-firld);
+    margin-bottom: 16px;
+    padding: 0 15px 0 15px;
+}
 
 @media (max-width: 640px) {
     .menu {
