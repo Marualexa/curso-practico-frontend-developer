@@ -14,6 +14,14 @@ const imagInProduct = document.querySelector('.product--image');
 const nameProduct = document.querySelector('.product--name');
 const descriptionProduct = document.querySelector('.product-description');
 const cardOrderButton = document.querySelector('#order-button');
+const body = document.querySelector('.body');
+const modalContainer = document.querySelector('.modal-container');
+
+const loginOpen = document.querySelector('.login-open');
+
+
+loginOpen.style.display = "flex"
+menuEsteIcon.style.display = 'none'
 
 emailMenu.addEventListener('click', toggleDesktopMenu);
 menuEsteIcon.addEventListener('click', toggleMovilMenu);
@@ -71,6 +79,10 @@ function openProductDetailAside(event) {
     shoppingCartContainer.classList.add('inactive');
     productDetailContainer.classList.remove('inactive');
 
+    // body.classList.add('body-inactive')
+    modalContainer.classList.add('active')
+
+
     imagInProduct.setAttribute('src', event.image)
     nameProduct.innerText = event.name
     priceProduct.innerText = '$' + event.price
@@ -103,6 +115,7 @@ function openProductDetailAside(event) {
 
 function closeProductDetailAside() {
     productDetailContainer.classList.add('inactive');
+    modalContainer.classList.remove('active')
 }
 
 

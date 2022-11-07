@@ -13,6 +13,24 @@
 </head>
 
 <body>
+  <div class="login" id="login-open">
+    <div class="form-container">
+        <img src="./logos/logo.png" alt="logo" class="logo"/>
+        <h1 class="title">Create a new password</h1>
+        <p class="subtitle">Enter a neew password for yue account</p>
+
+        <form action="" class="form"></form>
+        <label for="password" class="label">Password</label>
+        <input type="password" id="password" placeholder="*********" class="input input-password"/>
+
+        <label for="new-password" class="label">Re-enter password</label>
+        <input type="password" id="new-password" placeholder="*********" class="input input-password"/>
+
+        <input type="submit" value="Confirm" class="primary-button login-button"/>
+    </div>
+  </div>
+
+
   <nav>
     <img src="./iconos/icon-menu.png" alt="menu" class="menu">
 
@@ -117,39 +135,42 @@
   </nav>
 
   <aside id="shopping-cart-container" class="inactive">
-    <div class="title-container">
-      <img src="./iconos/right-arrow.svg" alt="">
-      <p class="title">My order</p>
-    </div>
+      <div class="title-container">
+        <img src="./iconos/right-arrow.svg" alt="">
+        <p class="title">My order</p>
+      </div>
 
-    <div class="my-order-content">
+      <div class="my-order-content">
         <p>
           <span>Total</span>
         </p>
         <p class="total">$0,00</p>
-    </div>
+      </div>
   </aside>
 
   <section class="main-container">
     <div class="cards-container"></div>
   </section>
 
-  <aside id="products-in-cart" class="inactive">
-    <div class="product-detail-close">
-      <img src="./iconos/icons8.png" alt="close">
-    </div>
-    <img class="product--image" src="./logos/img6.jpg" alt="Relog">
-    <div class="points">
-      <span class="active"></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="info-detall">
-      <p class="price">$120,00</p>
-      <p class="product--name">Relog</p>
-      <p class="product-description">Watch combos for women and hair, different colors</p>
-    </div>
-  </aside>
+  <section class="modal-container">
+    <aside id="products-in-cart" class="inactive">
+      <div class="product-detail-close">
+        <img src="./iconos/icons8.png" alt="close">
+      </div>
+      <img class="product--image" src="./logos/img6.jpg" alt="Relog">
+      <div class="points">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="info-detall">
+        <p class="price">$120,00</p>
+        <p class="product--name">Relog</p>
+        <p class="product-description">Watch combos for women and hair, different colors</p>
+      </div>
+    </aside>
+
+  </section>
 
   <script src="./main.js"></script>
 </body>
