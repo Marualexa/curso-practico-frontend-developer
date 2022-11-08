@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro</title>
+  <link rel="stylesheet" href="./clase-3.css">
+  <link rel="stylesheet" href="./clase-1.css">
+  <link rel="stylesheet" href="./clase-4.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,64 +16,146 @@
 </head>
 
 <body>
-  <div class="login" id="login-open">
+  <div class="login">
     <div class="form-container">
-        <img src="./logos/logo.png" alt="logo" class="logo"/>
-        <h1 class="title">Create a new password</h1>
-        <p class="subtitle">Enter a neew password for yue account</p>
+      <img src="./logos/logo.png" alt="logo" class="logo" />
 
-        <form action="" class="form"></form>
-        <label for="password" class="label">Password</label>
-        <input type="password" id="password" placeholder="*********" class="input input-password"/>
+      <form action="/" class="form">
+        <label for="email" class="label">Email</label>
+        <input type="text" id="password" placeholder="email.23@gmail.com" class="input input-password" />
 
-        <label for="new-password" class="label">Re-enter password</label>
-        <input type="password" id="new-password" placeholder="*********" class="input input-password"/>
+        <label for="password" class="label">password</label>
+        <input type="password" id="password" placeholder="*********" class="input input-password" />
 
-        <input type="submit" value="Confirm" class="primary-button login-button"/>
+        <input type="submit" value="Login" class="primary-button login-button" />
+        <!-- <input type="button" value="Login" class="primary-button login-button" /> -->
+        <a class="recur-contrase" href="/">Forgot my password</a>
+      </form>
+
+      <button class="secondary-button signup-button">Sign up</button>
     </div>
   </div>
 
+  <div class="login contrasena inactive">
+    <div class="form-container">
+      <img src="./logos/logo.png" alt="logo" class="logo" />
+      <h1 class="title">Create a new password</h1>
+      <p class="subtitle">Enter a neew password for yue account</p>
 
-  <nav>
-    <img src="./iconos/icon-menu.png" alt="menu" class="menu">
+      <form action="" class="form"></form>
+      <label for="password" class="label">Password</label>
+      <input type="password" id="password" placeholder="*********" class="input input-password" />
 
-    <div class="navbar-left">
-      <img src="./logos/logo.png" alt="logo" class="logo">
+      <label for="new-password" class="label">Re-enter password</label>
+      <input type="password" id="new-password" placeholder="*********" class="input input-password" />
 
-      <ul>
-        <li>
-          <a href="/">All</a>
-        </li>
-        <li>
-          <a href="/">Clothes</a>
-        </li>
-        <li>
-          <a href="/">Electronics</a>
-        </li>
-        <li>
-          <a href="/">Furnitures</a>
-        </li>
-        <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Others</a>
-        </li>
-      </ul>
+      <input type="submit" value="Confirm" class="primary-button login-button" />
     </div>
+  </div>
 
-    <div class="navbar-right">
-      <ul>
-        <li class="navbar-email">email@example.com</li>
-        <li class="navbar-shopping-cart">
-          <img src="./iconos/shopping.svg" alt="shopping cart" height="30px">
-          <div id="contador">0</div>
-        </li>
-      </ul>
+  <div class="login registro inactive">
+    <div class="form-container">
+      <h1 class="title">My account</h1>
+
+      <form action="/" class="form">
+        <div>
+          <label for="name" class="label">Name</label>
+          <input type="text" id="name" placeholder="Teff" class="input input-name">
+
+          <label for="email" class="label">Email</label>
+          <input type="text" id="email" placeholder="email.23@gmail.com" class="input input-name">
+
+          <label for="password" class="label">Password</label>
+          <input type="password" id="password" placeholder="********" class="input input-name">
+        </div>
+
+        <input type="submit" value="Create" class="primary-button login-button">
+      </form>
     </div>
+  </div>
 
-    <div class="deskton-menu inactive">
-      <div class="desktop-menu">
+  <div class="home-container inactive">
+    <nav>
+      <img src="./iconos/icon-menu.png" alt="menu" class="menu">
+
+      <div class="navbar-left">
+        <img src="./logos/logo.png" alt="logo" class="logo">
+
+        <ul>
+          <li>
+            <a href="/">All</a>
+          </li>
+          <li>
+            <a href="/">Clothes</a>
+          </li>
+          <li>
+            <a href="/">Electronics</a>
+          </li>
+          <li>
+            <a href="/">Furnitures</a>
+          </li>
+          <li>
+            <a href="/">Toys</a>
+          </li>
+          <li>
+            <a href="/">Others</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-right">
+        <ul>
+          <li class="navbar-email">email@example.com</li>
+          <li class="navbar-shopping-cart">
+            <img src="./iconos/shopping.svg" alt="shopping cart" height="30px">
+            <div id="contador">0</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="deskton-menu inactive">
+        <div class="desktop-menu">
+          <ul>
+            <li>
+              <a href="/" class="title">My orders</a>
+            </li>
+
+            <li>
+              <a href="/">My account</a>
+            </li>
+
+            <li>
+              <a href="/">sign out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mobile-menu inactive">
+        <ul>
+          <li>
+            <a href="/">CATEGORIES</a>
+          </li>
+          <li>
+            <a href="/">All</a>
+          </li>
+          <li>
+            <a href="/">Clothes</a>
+          </li>
+          <li>
+            <a href="/">Electronics</a>
+          </li>
+          <li>
+            <a href="/">Furnitures</a>
+          </li>
+          <li>
+            <a href="/">Toys</a>
+          </li>
+          <li>
+            <a href="/">Other</a>
+          </li>
+        </ul>
+
         <ul>
           <li>
             <a href="/" class="title">My orders</a>
@@ -79,62 +164,21 @@
           <li>
             <a href="/">My account</a>
           </li>
+        </ul>
 
+        <ul>
           <li>
-            <a href="/">sign out</a>
+            <a href="/" class="email">platzi@example.com</a>
+          </li>
+          <li>
+            <a href="/" class="sign-out">Sign out</a>
+
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
 
-    <div class="mobile-menu inactive">
-      <ul>
-        <li>
-          <a href="/">CATEGORIES</a>
-        </li>
-        <li>
-          <a href="/">All</a>
-        </li>
-        <li>
-          <a href="/">Clothes</a>
-        </li>
-        <li>
-          <a href="/">Electronics</a>
-        </li>
-        <li>
-          <a href="/">Furnitures</a>
-        </li>
-        <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Other</a>
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          <a href="/" class="title">My orders</a>
-        </li>
-
-        <li>
-          <a href="/">My account</a>
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          <a href="/" class="email">platzi@example.com</a>
-        </li>
-        <li>
-          <a href="/" class="sign-out">Sign out</a>
-
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <aside id="shopping-cart-container" class="inactive">
+    <aside id="shopping-cart-container" class="inactive">
       <div class="title-container">
         <img src="./iconos/right-arrow.svg" alt="">
         <p class="title">My order</p>
@@ -146,31 +190,32 @@
         </p>
         <p class="total">$0,00</p>
       </div>
-  </aside>
-
-  <section class="main-container">
-    <div class="cards-container"></div>
-  </section>
-
-  <section class="modal-container">
-    <aside id="products-in-cart" class="inactive">
-      <div class="product-detail-close">
-        <img src="./iconos/icons8.png" alt="close">
-      </div>
-      <img class="product--image" src="./logos/img6.jpg" alt="Relog">
-      <div class="points">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="info-detall">
-        <p class="price">$120,00</p>
-        <p class="product--name">Relog</p>
-        <p class="product-description">Watch combos for women and hair, different colors</p>
-      </div>
     </aside>
 
-  </section>
+    <section class="main-container">
+      <div class="cards-container"></div>
+    </section>
+
+    <section class="modal-container">
+      <aside id="products-in-cart" class="inactive">
+        <div class="product-detail-close">
+          <img src="./iconos/icons8.png" alt="close">
+        </div>
+        <img class="product--image" src="./logos/img6.jpg" alt="Relog">
+        <div class="points">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="info-detall">
+          <p class="price">$120,00</p>
+          <p class="product--name">Relog</p>
+          <p class="product-description">Watch combos for women and hair, different colors</p>
+        </div>
+      </aside>
+
+    </section>
+  </div>
 
   <script src="./main.js"></script>
 </body>

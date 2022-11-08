@@ -17,11 +17,35 @@ const cardOrderButton = document.querySelector('#order-button');
 const body = document.querySelector('.body');
 const modalContainer = document.querySelector('.modal-container');
 
-const loginOpen = document.querySelector('.login-open');
+const loginContainer = document.querySelector('.login');
+const articConteiner = document.querySelector('.home-container');
+const olviPass = document.querySelector('.recur-contrase')
+const createPass = document.querySelector('.contrasena');
+const sigRegis = document.querySelector('.signup-button');
+const registro = document.querySelector('.registro');
 
+const loginBotton = document.querySelector('.primary-button')
+loginBotton.addEventListener('click', function(ev) {
+    console.log('ev', ev)
+    ev.preventDefault();
+    console.log('click');
+    loginContainer.classList.add('inactive');
+    articConteiner.classList.remove('inactive')
+});
 
-loginOpen.style.display = "flex"
-menuEsteIcon.style.display = 'none'
+olviPass.addEventListener('click', function(ev) {
+    ev.preventDefault();
+    loginContainer.classList.add('inactive');
+    createPass.classList.remove('inactive')
+    console.log('contraseña', olviPass)
+})
+
+sigRegis.addEventListener('click', function() {
+    loginContainer.classList.add('inactive');
+    registro.classList.remove('inactive');
+    console.log('registro', sigRegis);
+})
+
 
 emailMenu.addEventListener('click', toggleDesktopMenu);
 menuEsteIcon.addEventListener('click', toggleMovilMenu);
