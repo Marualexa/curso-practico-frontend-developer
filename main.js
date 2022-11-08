@@ -17,14 +17,22 @@ const cardOrderButton = document.querySelector('#order-button');
 const body = document.querySelector('.body');
 const modalContainer = document.querySelector('.modal-container');
 
+const loginBotton = document.querySelector('.primary-button');
 const loginContainer = document.querySelector('.login');
 const articConteiner = document.querySelector('.home-container');
 const olviPass = document.querySelector('.recur-contrase')
 const createPass = document.querySelector('.contrasena');
 const sigRegis = document.querySelector('.signup-button');
 const registro = document.querySelector('.registro');
+const myAccount = document.querySelector('.mi-cuenta');
+const myProfile = document.querySelector('.my-profile');
+const emailConfir = document.querySelector('#confirm-email');
+const confirmCorre = document.querySelector('.email');
+const buttonLogin = document.querySelector('#boton-inicio');
+const edictPerfil = document.querySelector('#my-profile-edicte');
+const bottonEdict = document.querySelector('#edict');
+const closetHome = document.querySelector('.cerrar');
 
-const loginBotton = document.querySelector('.primary-button')
 loginBotton.addEventListener('click', function(ev) {
     console.log('ev', ev)
     ev.preventDefault();
@@ -36,16 +44,58 @@ loginBotton.addEventListener('click', function(ev) {
 olviPass.addEventListener('click', function(ev) {
     ev.preventDefault();
     loginContainer.classList.add('inactive');
-    createPass.classList.remove('inactive')
+    createPass.classList.remove('inactive');
     console.log('contraseña', olviPass)
-})
+});
 
 sigRegis.addEventListener('click', function() {
     loginContainer.classList.add('inactive');
     registro.classList.remove('inactive');
     console.log('registro', sigRegis);
+});
+
+myAccount.addEventListener('click', function(ev) {
+    ev.preventDefault();
+    articConteiner.classList.add('inactive');
+    myProfile.classList.remove('inactive');
+    console.log('click', myAccount);
+});
+
+emailConfir.addEventListener('click', function(ev) {
+    ev.preventDefault();
+    createPass.classList.add('inactive');
+    confirmCorre.classList.remove('inactive');
+    console.log('email', emailConfir);
+});
+
+buttonLogin.addEventListener('click', function() {
+    confirmCorre.classList.add('inactive');
+    loginContainer.classList.remove('inactive');
+    console.log('confirma', buttonLogin);
 })
 
+edictPerfil.addEventListener('click', function(ev) {
+    ev.preventDefault();
+    console.log('boton', bottonEdict)
+    bottonEdict.setAttribute('value', 'Confirm');
+    myProfile.classList.add('inactive');
+    registro.classList.remove('inactive');
+    console.log('edictor', edictPerfil);
+})
+
+bottonEdict.addEventListener('click', function(ev) {
+    ev.preventDefault();
+    registro.classList.add('inactive');
+    articConteiner.classList.remove('inactive');
+    console.log('click boton', bottonEdict);
+})
+
+closetHome.addEventListener('click', function(ev) {
+    ev.preventDefault();
+    articConteiner.classList.add('inactive');
+    loginContainer.classList.remove('inactive');
+    console.log('cerrar perfil', closetHome);
+})
 
 emailMenu.addEventListener('click', toggleDesktopMenu);
 menuEsteIcon.addEventListener('click', toggleMovilMenu);
