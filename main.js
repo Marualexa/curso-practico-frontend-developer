@@ -33,7 +33,7 @@ const edictPerfil = document.querySelector('#my-profile-edicte');
 const bottonEdict = document.querySelector('#edict');
 const closetHome = document.querySelector('.cerrar');
 
-loginBotton.addEventListener('click', function(ev) {
+loginBotton.addEventListener('click', function (ev) {
     console.log('ev', ev)
     ev.preventDefault();
     console.log('click');
@@ -41,40 +41,40 @@ loginBotton.addEventListener('click', function(ev) {
     articConteiner.classList.remove('inactive')
 });
 
-olviPass.addEventListener('click', function(ev) {
+olviPass.addEventListener('click', function (ev) {
     ev.preventDefault();
     loginContainer.classList.add('inactive');
     createPass.classList.remove('inactive');
     console.log('contraseña', olviPass)
 });
 
-sigRegis.addEventListener('click', function() {
+sigRegis.addEventListener('click', function () {
     loginContainer.classList.add('inactive');
     registro.classList.remove('inactive');
     console.log('registro', sigRegis);
 });
 
-myAccount.addEventListener('click', function(ev) {
+myAccount.addEventListener('click', function (ev) {
     ev.preventDefault();
     articConteiner.classList.add('inactive');
     myProfile.classList.remove('inactive');
     console.log('click', myAccount);
 });
 
-emailConfir.addEventListener('click', function(ev) {
+emailConfir.addEventListener('click', function (ev) {
     ev.preventDefault();
     createPass.classList.add('inactive');
     confirmCorre.classList.remove('inactive');
     console.log('email', emailConfir);
 });
 
-buttonLogin.addEventListener('click', function() {
+buttonLogin.addEventListener('click', function () {
     confirmCorre.classList.add('inactive');
     loginContainer.classList.remove('inactive');
     console.log('confirma', buttonLogin);
 })
 
-edictPerfil.addEventListener('click', function(ev) {
+edictPerfil.addEventListener('click', function (ev) {
     ev.preventDefault();
     console.log('boton', bottonEdict)
     bottonEdict.setAttribute('value', 'Confirm');
@@ -83,14 +83,14 @@ edictPerfil.addEventListener('click', function(ev) {
     console.log('edictor', edictPerfil);
 })
 
-bottonEdict.addEventListener('click', function(ev) {
+bottonEdict.addEventListener('click', function (ev) {
     ev.preventDefault();
     registro.classList.add('inactive');
     articConteiner.classList.remove('inactive');
     console.log('click boton', bottonEdict);
 })
 
-closetHome.addEventListener('click', function(ev) {
+closetHome.addEventListener('click', function (ev) {
     ev.preventDefault();
     articConteiner.classList.add('inactive');
     loginContainer.classList.remove('inactive');
@@ -289,7 +289,7 @@ function listOrderProduct(orderInCard, createCheckoutButton = true) {
 
         const contentInfo = document.createElement('p');
         contentInfo.innerText = listOrderProduct.name + ' X' + contadorDeIds[listOrderProduct.id];
-        
+
 
         const priceInform = document.createElement('p');
         priceInform.innerText = '$' + listOrderProduct.price;
@@ -526,9 +526,45 @@ function listProducts(arr) {
 
 }
 
-listProducts(productList);
 
-listOrderProduct(orderProduct, false);
+
+const API = 'https://api.escuelajs.co/api/v1/products';
+
+const options = {
+    method: 'GET'
+};
+
+async function fetchData(urlApi) {
+    const response = await fetch(urlApi, options);
+    const data = await response.json();
+    return data;
+}
+
+(async () => {
+    try {
+        const products = await fetchData(API);
+        const copyProducts = products.map(product => {
+            return {
+                id: product.id,
+                name: product.title,
+                price: product.price,
+                image: product.images[0],
+                cantidad: '1'
+            }
+        })
+        console.log('respuesta', copyProducts);
+
+        listProducts(copyProducts);
+
+        listOrderProduct(orderProduct, false);
+
+    } catch (error) {
+        console.error(Error)
+    }
+})();
+
+
+
 
 
 
